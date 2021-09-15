@@ -1,20 +1,15 @@
-name: CI/CD Pipeline
+name: Push-to-EC2
+
 on: push
-  
 
 jobs:
-  continuous-integration:
+  deploy:
+    name: Push to EC2 Instance
     runs-on: ubuntu-latest
+
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id:$ AKIA5IQZOYBVB7JJ4EMP
-          aws-secret-access-key:$ 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
-          aws-region:us-east-2
-          
       - name: Checkout the code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v
 
       - name: Deploy to my EC2 instance
         uses: easingthemes/ssh-deploy@main
@@ -46,6 +41,6 @@ jobs:
                              eTBG7TktbeGU8WZjAAAAFWFkbWluQGlwLTE3Mi0zMS0zMC0yNAECAwQF 
 
           SOURCE: "./"
-          REMOTE_HOST: "ec2-3-128-160-46.us-east-2.compute.amazonaws.com"
-          REMOTE_USER: "admin"
-          TARGET: "/home/admin"
+          REMOTE_HOST: "admin@ec2-18-223-99-29.us-east-2.compute.amazonaws.com"
+          REMOTE_USER: "root"
+          TARGET: "/home/root"
