@@ -1,0 +1,46 @@
+name: Push-to-EC2
+
+on: push
+
+jobs:
+  deploy:
+    name: Push to EC2 Instance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v1
+
+      - name: Deploy to my EC2 instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: $ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn
+                             NhAAAAAwEAAQAAAQEA28tbv0FOE+4iqJTGf4ZDEaAVwj7uoEtItE9sDx17XSsHB3s0Eeei
+                             N9QpOlnjraRlzSoG0W9XW/uFXbORy7hlBFaijBKJuKgjkkVLjPZHustIrzTtlpAJzGQWJo
+                             azCPCXUG2RgH/zkWD8TujyBnHyky3JhmtBmGVxCQC0r4ghsIB0j8YLYbjsiT02c6WPoacX
+                             0y56R0m8vqaYjoDdjTVVUtyJ9VZm4NdH8jItcMpruziSLDi+uWEzuH8D4HVpKewTuVJeGe
+                             R9IjQSLLogonbmXNy06YTFzewEdTCb/9KBjJ4gvKcdyCQxAsoCsRaIUIWq1hzEBHv1qqf/
+                             zjjbENxFNQAAA9AcKvPcHCrz3AAAAAdzc2gtcnNhAAABAQDby1u/QU4T7iKolMZ/hkMRoB
+                             XCPu6gS0i0T2wPHXtdKwcHezQR56I31Ck6WeOtpGXNKgbRb1db+4Vds5HLuGUEVqKMEom4
+                             qCOSRUuM9ke6y0ivNO2WkAnMZBYmhrMI8JdQbZGAf/ORYPxO6PIGcfKTLcmGa0GYZXEJAL
+                             SviCGwgHSPxgthuOyJPTZzpY+hpxfTLnpHSby+ppiOgN2NNVVS3In1Vmbg10fyMi1wymu7
+                             OJIsOL65YTO4fwPgdWkp7BO5Ul4Z5H0iNBIsuiCiduZc3LTphMXN7AR1MJv/0oGMniC8px
+                             3IJDECygKxFohQharWHMQEe/Wqp//OONsQ3EU1AAAAAwEAAQAAAQEAiWZKF3hyn8DpR6uh
+                             nwzGlpkVoRWIRQprC9Tuf1B10xtXzJR3S44a+X2WvFR/IQi5XxUbqAdLfEPy7k2YIdtGwv
+                             yJprjcAWSSwBizjw5SbvIvoN+cetfWWEBlHHZuK3ODlBK6t7LFB6eycn3q9p56/wjLh007
+                             d1JK5E7dpTGbpeKueIIMiT19qXF1I+cicJhjFt3oUAbiKyhu5l8aTpvARH1XeCb3YycszS
+                             uG3GwTIqpUYdlwo0ZS5Ik84BH6NxT9AHSqwZ4G1+okLgk3QlZXqIFMscNGl42SG0z2gH1j
+                             gGjVWnZgDFiGko5AohPaOOyq2hoU3FGH3zVlFkuR8WcbrQAAAIB9CWU3o3QSmb4PxREpJ1
+                             C1hZ6j2lPLgAbXRr2psLR33lGA2ctXCR5FPQ1nUvDCGm97z2DIBOC/IjiaZcUARRMkx9/J
+                             0Myl6wY9YJcSukJiVCFLr29dq/3Z5rLHyGkQ8uxwAkomb99fIQghoZN8ly/vgE3LAulvi/
+                             /7yt1eSAgQIAAAAIEA+m3g3xzSQ2sKBXZjHg+8v2kgP3+6ENOTvYhgsidWdevBCNLqJT2d
+                             ddFMuAfH+PVK2dFfQqFA4Xzj1z3D6QbhQul/B7nGJ7xdeax2slNlFZIXzJROoE7pTyG82e
+                             Kh9BmUqeS2YxN/6V9/X4fTx+dhs5q5TEVK92yIQP80nMLGzYcAAACBAOCvBgDAfHc/grn7
+                             YIKHyzESQyxQetstJi0LbKrPKnTzHEEobmvaQqAbKHTKudrDsebX8rt+ndFOSFCjYBkPJT
+                             WX2J29P9eTaNtSnvcWfaK8AQFu5llqw5Y4m46XXQ4o639O/arCyPdOFIK0KI/N1ODWngrp
+                             eTBG7TktbeGU8WZjAAAAFWFkbWluQGlwLTE3Mi0zMS0zMC0yNAECAwQF 
+
+          SOURCE: "./"
+          REMOTE_HOST: "ec2-3-128-160-46.us-east-2.compute.amazonaws.com"
+          REMOTE_USER: "admin"
+          TARGET: "/home/admin"
