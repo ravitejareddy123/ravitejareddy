@@ -11,7 +11,17 @@ jobs:
         
       
           
+      - name: Checkout ravitejareddy
+        uses: actions/checkout@v2
+        with:
+          path: ravitejareddy
       
+      - name: Get 10 digits GITHUB_SHA
+        id: image-tag
+        run: |
+          cd ridgecrest
+          echo ::set-output name=tag::$(git rev-parse --short=10 ${{ github.sha }})
+          
       - name: Checkout public odoo 
         uses: actions/checkout@v2
         with:
@@ -29,12 +39,14 @@ jobs:
       - name: Build, tag, and push image to Docker Hub
         id: build-image
         env:
-          IMAGE_TAG: latest
+          IMAGE_TAG: ${{ steps.image-tag.outputs.tag }}
         run: |
           ls -la
           pwd
           cd docker/16.0
           docker build -t raviteja1996/odoo-new .
-          
+          docker tag raviteja1996/odoo-new raviteja1996/odoo-new:$IMAGE_TAG
           docker push raviteja1996/odoo-new
+          
+          docker push raviteja1996/odoo-new:$IMAGE_TAG
           
