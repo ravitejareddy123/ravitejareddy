@@ -29,7 +29,7 @@ jobs:
           ls -la
           pwd
           cd docker/16.0
-          docker build -t odoo-new .
+          docker build -t raviteja1996/odoo-new .
           
-          docker push odoo-new
+          docker push raviteja1996/odoo-new
           
