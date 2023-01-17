@@ -19,7 +19,7 @@ jobs:
       - name: Get 10 digits GITHUB_SHA
         id: image-tag
         run: |
-          cd ridgecrest
+          cd ravitejareddy
           echo ::set-output name=tag::$(git rev-parse --short=10 ${{ github.sha }})
           
       - name: Checkout public odoo 
