@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: odoo
-        image: testmailqwer/odo:14
+        image: raviteja1996/odoo-new:$IMAGE_TAG
         ports:
         - containerPort: 8069
         env:
