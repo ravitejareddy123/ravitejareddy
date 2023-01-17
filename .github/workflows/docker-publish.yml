@@ -26,6 +26,8 @@ jobs:
         env:
           IMAGE_TAG: latest
         run: |
+          ls -la
+          pwd
           cd odoo/docker/16.0
           docker build -t odoo-new .
           
